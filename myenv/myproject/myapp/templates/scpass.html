@@ -1,12 +1,12 @@
-{% extends 'header.html'%}
+{% extends 'sheader.html'%}
 {% load static %}
 {% block content %}
 
 <!DOCTYPE html>
 <html>
   <head>
-    
-	  <link rel="stylesheet" href="styles.css" />
+    <title></title>
+	 
   </head>
 
   <style>
@@ -51,7 +51,7 @@
       textarea,
       select {
         margin: 10px 0 0 0;
-        width: 100%;
+          width: 100%;
         min-height: 2em;
       }
       
@@ -98,7 +98,7 @@
 			<div class="col-lg-8 offset-lg-2 text-center">
 				<div class="breadcrumb-text">
 					<p>We sale fresh fruits</p>
-					<h1>LOG IN</h1>
+					<h1>Update Password</h1>
 				</div>
 			</div>
 		</div>
@@ -106,33 +106,31 @@
 </div>
    <br>
    <br>
-   <br>
-   <br>
-   <br>
-   <br>
+   
+   
    {% if msg %}
    <div class="alert alert-warning" role="alert">
     
   </div>
    {{msg}}
    {% endif %}
-    <form method="post" action="{% url 'login' %}" enctype="multipart/form-data">
+    <form method="post" action="{% url 'cpass' %}">
        {% csrf_token %} 
       
       <fieldset>
        
-        <label>Enter Your Email: <input type="email" name="email" required /></label>
-        <label> Password: <input type="password" name="password"  required /></label>
-        <h6 style="font-size: x-small;"><a href="{% url 'fpass' %}">Forget Password?</a></h6>
+        <label>Old Password: <input type="password" name="opass" required /></label>
+        <label> New Password: <input type="password" name="npassword"  required /></label>
+        <label> Reapet Password: <input type="password" name="rpassword"  required /></label>
         
       </fieldset>
       
-      <input type="submit" value="Log in" />
-      <P style="color: #ffffff;">If you don't have a account<a href="{% url 'signin' %}">&nbsp; Sign Up</a></P>
-      <p style="color: #f5f6f7;">-----OR-----</p>
-       <button class="btn btn-primary mb-2" style="margin-left: 180px;">
-        <a href="">Log In with Google</a>
-       </button>
+       
+        
+        
+      </fieldset>
+      <input type="submit" value="Update" />
+      
     </form>
   </body>
 </html>

@@ -36,7 +36,6 @@
 
 </head>
 
-
 <body>
 	
 	<!--PreLoader-->
@@ -47,7 +46,6 @@
     </div>
     <!--PreLoader Ends-->
 	
-<!-- header -->
 <!-- header -->
 <div class="top-header-area" id="sticker">
     <div class="container">
@@ -66,13 +64,8 @@
                             <li class="current-list-item"><a href="{% url 'sindex'%}">Home</a></li>
                             <li><a href="{% url 'about' %}">About</a></li>
                             <li><a href="{% url 'contact' %}">Contact</a></li>
-                            <li><a href="{% url 'news' %}">News</a></li>
-                            <li><a href="{% url 'shop' %}">Shop</a></li>
-								<ul class="sub-menu">
-									<li><a href="{% url 'shop'%}">Shop</a></li>
-									<li><a href="{% url 'cart' %}">Cart</a></li>
-									<li><a href="">Checkout</a></li>
-								</ul>
+                            <li><a href="{% url 'sadd' %}">Add product</a></li>
+                            <li><a href="{% url 'sview' %}">View product</a></li>
                             
 							<li>
 								{% if request.session.email  %}
@@ -95,7 +88,7 @@
                     </nav>
                     <!-- menu end -->
                     <div class="header-icons">
-                        <a class="shopping-cart" href="{% url 'cart' %}"><i class="fas fa-shopping-cart"></i></a>
+                        <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
                         <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
                     </div>
                 </div>
@@ -103,8 +96,6 @@
         </div>
     </div>
 </div>
-<!-- end header -->
-
 <!-- end header -->
 
     {% block content %}

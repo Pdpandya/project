@@ -1,12 +1,12 @@
-{% extends 'header.html'%}
+{% extends 'sheader.html'%}
 {% load static %}
 {% block content %}
 
 <!DOCTYPE html>
 <html>
   <head>
-    
-	  <link rel="stylesheet" href="styles.css" />
+    <title>Registration Form</title>
+	  
   </head>
 
   <style>
@@ -51,7 +51,7 @@
       textarea,
       select {
         margin: 10px 0 0 0;
-        width: 100%;
+          width: 100%;
         min-height: 2em;
       }
       
@@ -76,11 +76,12 @@
       a {
         color: #dfdfe2;
       }
-     input[type="submit"] {
+
+      input[type="submit"] {
         display: flex;
         justify-content: center;
-        align-content: center;
         width: 20%;
+        align-content: center;
         margin: auto;
         height: 25x;
         font-size: 15px;
@@ -91,19 +92,6 @@
       
   </style>
   <body>
-    <!-- breadcrumb-section -->
-<div class="breadcrumb-section breadcrumb-bg">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 offset-lg-2 text-center">
-				<div class="breadcrumb-text">
-					<p>We sale fresh fruits</p>
-					<h1>LOG IN</h1>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
    <br>
    <br>
    <br>
@@ -116,23 +104,27 @@
   </div>
    {{msg}}
    {% endif %}
-    <form method="post" action="{% url 'login' %}" enctype="multipart/form-data">
+    <form method="post" action="{% url 'sprofile' %}" enctype="multipart/form-data">
        {% csrf_token %} 
       
       <fieldset>
-       
-        <label>Enter Your Email: <input type="email" name="email" required /></label>
-        <label> Password: <input type="password" name="password"  required /></label>
-        <h6 style="font-size: x-small;"><a href="{% url 'fpass' %}">Forget Password?</a></h6>
+        <label>Enter Your Full Name: <input type="text" name="name"placeholder= "Christopher Nolen" value="{{user.name}}"/></label>
+        <label>Enter Your mobile number:<input type="tel" id="mobile" name="mobile" value="{{user.mobile}}" ></label>
+        <label>Enter Your Email: <input type="email" name="email" value="{{user.email}}" readonly/></label>
         
       </fieldset>
-      
-      <input type="submit" value="Log in" />
-      <P style="color: #ffffff;">If you don't have a account<a href="{% url 'signin' %}">&nbsp; Sign Up</a></P>
-      <p style="color: #f5f6f7;">-----OR-----</p>
-       <button class="btn btn-primary mb-2" style="margin-left: 180px;">
-        <a href="">Log In with Google</a>
-       </button>
+      <p > <img src="{{user.profile.url}}" style= "height: 200px; width:200px"></p>
+      <fieldset>
+        
+        <label>Change profile picture: <input type="file" name="pr" /></label>
+        <label>Input your age (years): <input type="number" name="age" value="{{user.age}}" />
+			  </label>
+       
+        
+        
+      </fieldset>
+      <input type="submit" value="UPDATE" />
+      <P style="color: #ffffff;">If you already have acoount <a href="{% url 'login' %}">&nbsp; Login</a></P>
     </form>
   </body>
 </html>

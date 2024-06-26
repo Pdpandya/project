@@ -1,0 +1,41 @@
+{% extends 'sheader.html'%}
+{% load static %}
+{% block content %}	
+    
+<style>
+	body {
+		background-color: #44495D; 
+	}
+    .product-section .single-product-item {
+        margin-bottom: 30px;
+    }
+</style>
+    <!-- product section -->
+	<div class="product-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="section-title">	
+						<h3><span class="orange-text"></span> Products</h3>
+					</div>
+				</div>
+			</div>
+            <div class="row">
+                {% for i in product %}
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="single-product-item">
+                        <div class="product-image">
+                            <a href="{% url 'pdetails' pk=i.pk %}"><img src="{{i.pimage.url}}" alt=""></a>
+                        </div>
+                        <h3>{{i.pname}}</h3>
+                        <p class="product-price"><span>Per Kg</span> {{i.pprice}}</p>
+                        <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                    </div>
+                </div>
+                {% endfor %} 
+            </div>
+		</div>
+	</div>
+	<!-- end product section -->
+
+{% endblock %}

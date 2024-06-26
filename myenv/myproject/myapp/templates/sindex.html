@@ -1,4 +1,4 @@
-{% extends 'header.html'%}
+{% extends 'sheader.html'%}
 {% load static %}
 {% block content %}
 
@@ -9,52 +9,6 @@
 	body {
 		background-color: #44495D; 
 	}
-
-	.slider-container {
-		display: flex;
-		overflow: hidden;
-		width: 100%;
-	}
-	
-	.slider-container .col-lg-4 {
-		flex: 0 0 100%;
-		max-width: 100%;
-		transition: transform 0.5s ease-in-out;
-	}
-	
-	@media (min-width: 768px) {
-		.slider-container .col-md-6 {
-			flex: 0 0 50%;
-			max-width: 50%;
-		}
-	}
-	
-	@media (min-width: 992px) {
-		.slider-container .col-lg-4 {
-			flex: 0 0 33.3333%;
-			max-width: 33.3333%;
-		}
-	}
-	
-	.slider-controls {
-		text-align: center;
-		margin-top: 10px;
-	}
-	
-	.slider-controls button {
-		background-color: #333;
-		color: #fff;
-		border: none;
-		padding: 5px 10px;
-		margin: 0 5px;
-		cursor: pointer;
-	}
-	
-	.slider-controls button:disabled {
-		background-color: #aaa;
-		cursor: not-allowed;
-	}
-	
 </style>
 
 <body>
@@ -140,23 +94,36 @@
 			</div>
 
 			<div class="row">
-				<div class="row">
-					<div class="slider-container">
-						{% for i in product %}
-						<div class="col-lg-4 col-md-6 text-center">
-							<div class="single-product-item">
-								<div class="product-image">
-									<a href="{% url 'pdetails' pk=i.pk %}"><img src="{{i.pimage.url}}" alt=""></a>
-								</div>
-								<h3>{{i.pname}}</h3>
-								<p class="product-price"><span>Per Kg</span> {{i.pprice}}</p>
-								<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-							</div>
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="{% static 'img/products/product-img-1.jpg'%}" alt=""></a>
 						</div>
-						{% endfor %} 
+						<h3>Strawberry</h3>
+						<p class="product-price"><span>Per Kg</span> 85$ </p>
+						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
 					</div>
 				</div>
-						
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="{% static 'img/products/product-img-2.jpg'%}" alt=""></a>
+						</div>
+						<h3>Berry</h3>
+						<p class="product-price"><span>Per Kg</span> 70$ </p>
+						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="{% static 'img/products/product-img-3.jpg'%}" alt=""></a>
+						</div>
+						<h3>Lemon</h3>
+						<p class="product-price"><span>Per Kg</span> 35$ </p>
+						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -376,45 +343,7 @@
 	<!-- end logo carousel -->
 
 
-	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			const slider = document.querySelector('.slider-container');
-			const items = slider.querySelectorAll('.col-lg-4, .col-md-6');
-			const totalItems = items.length;
-			const itemWidth = items[0].offsetWidth;
-			let currentIndex = 0;
-		
-			const prevBtn = document.createElement('button');
-			prevBtn.textContent = 'Prev';
-			prevBtn.disabled = true;
-			prevBtn.className = 'slider-prev';
-			prevBtn.addEventListener('click', () => slide(-1));
-		
-			const nextBtn = document.createElement('button');
-			nextBtn.textContent = 'Next';
-			nextBtn.className = 'slider-next';
-			nextBtn.addEventListener('click', () => slide(1));
-		
-			const controls = document.createElement('div');
-			controls.className = 'slider-controls';
-			controls.appendChild(prevBtn);
-			controls.appendChild(nextBtn);
-		
-			slider.parentNode.insertBefore(controls, slider.nextSibling);
-		
-			function slide(direction) {
-				currentIndex += direction;
-				slider.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
-				updateControls();
-			}
-		
-			function updateControls() {
-				prevBtn.disabled = currentIndex === 0;
-				nextBtn.disabled = currentIndex === totalItems - 1;
-			}
-		});
-		</script>
-		
+
 </body>
 </html>
 {% endblock %}
